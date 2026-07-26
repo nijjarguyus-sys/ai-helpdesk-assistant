@@ -1,0 +1,7 @@
+{
+  "password": "To reset your password, press Ctrl + Alt + Delete and choose Change Password. If you've forgotten it, contact your IT administrator.",
+  "vpn": "Verify your internet connection, restart the VPN client, and sign in again with your latest credentials.",
+  "printer": "Check that the printer is powered on, connected to the network, and set as your default printer.",
+  "wifi": "Restart your Wi-Fi adapter, reconnect to the network, and verify that Airplane Mode is turned off.",
+  "email": "Verify your Outlook credentials, internet connection, and mailbox configuration."
+}

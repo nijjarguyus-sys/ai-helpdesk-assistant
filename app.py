@@ -3,11 +3,13 @@ from utils.ai import ask_ai
 import streamlit as st
 
 st.set_page_config(
+
     page_title="AI Help Desk Assistant",
     page_icon="💻",
     layout="wide",
 )
-
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 # ---------- Sidebar ----------
 with st.sidebar:
     st.title("💻 AI Help Desk")
@@ -33,6 +35,10 @@ with st.sidebar:
     st.divider()
 
     st.markdown("### 📊 Support")
+    st.sidebar.write(f"Messages: {len(st.session_state.messages)}")
+if st.sidebar.button("🗑️ Clear Chat"):
+    st.session_state.messages = []
+    st.rerun()
 
     st.metric("Open Tickets", "12")
     st.metric("Resolved Today", "31")
@@ -104,23 +110,44 @@ if st.button("Get Troubleshooting Steps", use_container_width=True):
         st.success(
             "Reconnect to Wi-Fi or restart your network adapter."
         )
-
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 question = st.chat_input("Ask an IT question...")
 
 if question:
-    with st.chat_message("user"):
-        st.write(question)
 
+    # Save user message
+    st.session_state.messages.append(
+        {
+            "role": "user",
+            "content": question
+        }
+    )
+
+    with st.chat_message("user"):
+        st.markdown(question)
+
+    # Search knowledge base
     answer = get_answer(question)
 
-    with st.chat_message("assistant"):
-        if answer:
-            st.write(answer)
-        else:
-            with st.spinner("🤖 Thinking..."):
-                ai_answer = ask_ai(question)
+    # Decide response
+    if answer:
+        response = answer
+    else:
+        with st.spinner("🤖 Thinking..."):
+            response = ask_ai(question)
 
-            st.write(ai_answer)
+    # Save assistant response
+    st.session_state.messages.append(
+        {
+            "role": "assistant",
+            "content": response
+        }
+    )
+
+    with st.chat_message("assistant"):
+        st.markdown(response)
 
 st.caption(
     "Built with ❤️ using Python and Streamlit by Kuldip Singh"

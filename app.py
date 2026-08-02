@@ -113,10 +113,28 @@ if st.button("Get Troubleshooting Steps", use_container_width=True):
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-question = st.chat_input("Ask an IT question...")
+        st.subheader("💡 Suggested Questions")
+question = None
+col1, col2, col3 = st.columns(3)
 
+with col1:
+    if st.button("🔑 Reset Password"):
+        question = "How do I reset my password?"
+
+with col2:
+    if st.button("🌐 VPN Problem"):
+        question = "VPN is not connecting."
+
+with col3:
+    if st.button("🖨 Printer Offline"):
+        question = "Printer is offline."
+
+
+typed_question = st.chat_input("Ask an IT question...")
+
+if typed_question:
+    question = typed_question
 if question:
-
     # Save user message
     st.session_state.messages.append(
         {

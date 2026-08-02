@@ -105,48 +105,23 @@ if st.button("Get Troubleshooting Steps", use_container_width=True):
             "Reconnect to Wi-Fi or restart your network adapter."
         )
 
-
-''''''
-question = st.text_area(
-    "Describe your IT problem",
-    placeholder="Example: My Outlook keeps asking for my password..."
-)
-
-if st.button("Ask AI"):
-
-    if question.strip():
-
-        with st.spinner("Analyzing your issue..."):
-
-            answer = ask_ai(question)
-
-        st.success(answer)
-
-    else:
-        st.warning("Please describe your problem.")
-        st.divider()
 question = st.chat_input("Ask an IT question...")
-''''''
 
 if question:
-
     with st.chat_message("user"):
         st.write(question)
 
     answer = get_answer(question)
 
     with st.chat_message("assistant"):
-
         if answer:
-
             st.write(answer)
-
         else:
+            with st.spinner("🤖 Thinking..."):
+                ai_answer = ask_ai(question)
 
-            st.warning(
-                "I don't know that answer yet.\n\n"
-                "When Gemini is available, I'll generate an AI response."
-            )
+            st.write(ai_answer)
+
 st.caption(
     "Built with ❤️ using Python and Streamlit by Kuldip Singh"
 )

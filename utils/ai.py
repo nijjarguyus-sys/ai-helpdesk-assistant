@@ -1,40 +1,29 @@
-from google import genai
-from config import GEMINI_API_KEY
+from groq import Groq
+from config import GROQ_API_KEY
 
-
-client = genai.Client(
-    api_key=GEMINI_API_KEY
-)
+client = Groq(api_key=GROQ_API_KEY)
 
 
 def ask_ai(question: str) -> str:
-
     try:
-
-        prompt = f"""
-You are an experienced IT Help Desk Engineer.
-
-A user has reported this problem:
-
-{question}
-
-Provide:
-
-1. Possible cause
-2. Step-by-step troubleshooting
-3. When to contact IT support
-
-Keep the answer professional and easy to understand.
-"""
-
-        response = client.models.generate_content(
-           model="gemini-2.0-flash",
-            contents=prompt
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are an experienced IT Help Desk Engineer. "
+                        "Provide: 1. Possible cause, "
+                        "2. Step-by-step troubleshooting, "
+                        "3. When to contact IT support."
+                    ),
+                },
+                {"role": "user", "content": question},
+            ],
         )
 
-        return response.text
-
+        return response.choices[0].message.content
 
     except Exception as error:
-
-        return f"AI Error: {error}"
+        print(f"Groq error: {error}")
+        return "⚠️ AI service is temporarily unavailable."

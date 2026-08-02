@@ -44,7 +44,12 @@ Future features:
 | Python | Application development |
 | Streamlit | Web interface |
 | Git/GitHub | Version control |
-| OpenAI/Gemini API | AI capabilities (planned) |
+| OpenAI/Gemini/Groq API | AI capabilities (planned) |
+## AI Provider
+
+The application uses the **Groq API** for AI-powered responses.
+
+The project was initially developed with the Gemini API. Due to API quota limitations during development, the AI integration was migrated to Groq with minimal architectural changes.
 
 ## 📂 Project Structure
 

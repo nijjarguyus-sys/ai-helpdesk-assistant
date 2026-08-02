@@ -94,7 +94,9 @@ Run application:
 
 streamlit run app.py
 📸 Screenshots
-Screenshot 2026-07-11 173746.png
+## App Preview
+
+![IT Helpdesk Assistant app](assets/screenshots/app-preview.png)
 
 
 📈 Future Improvements

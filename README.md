@@ -96,7 +96,7 @@ streamlit run app.py
 📸 Screenshots
 ## App Preview
 
-![IT Helpdesk Assistant](assets/Screenshots/app-preview.png)
+![IT Helpdesk Assistant](assets/screenshots/app-preview.png)
 
 📈 Future Improvements
 Connect with Gemini AI API

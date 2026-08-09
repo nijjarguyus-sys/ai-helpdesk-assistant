@@ -93,10 +93,18 @@ pip install -r requirements.txt
 Run application:
 
 streamlit run app.py
+
+
 📸 Screenshots
 ## App Preview
 
 ![IT Helpdesk Assistant](assets/screenshots/app-preview.png)
+
+
+
+
+
+
 
 📈 Future Improvements
 Connect with Gemini AI API

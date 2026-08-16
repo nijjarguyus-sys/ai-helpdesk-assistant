@@ -24,3 +24,5 @@ Thumbs.db
 *.log
 #Documentation
 *.docx
+# Local testing files
+test_knowledge_base.py

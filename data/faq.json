@@ -1,7 +1,99 @@
-{
-  "password": "To reset your password, press Ctrl + Alt + Delete and choose Change Password. If you've forgotten it, contact your IT administrator.",
-  "vpn": "Verify your internet connection, restart the VPN client, and sign in again with your latest credentials.",
-  "printer": "Check that the printer is powered on, connected to the network, and set as your default printer.",
-  "wifi": "Restart your Wi-Fi adapter, reconnect to the network, and verify that Airplane Mode is turned off.",
-  "email": "Verify your Outlook credentials, internet connection, and mailbox configuration."
-}
+[
+  {
+    "id": "PASSWORD-001",
+    "category": "Account & Password",
+    "issue": "Password reset",
+    "keywords": [
+      "password",
+      "reset password",
+      "change password",
+      "forgot password"
+    ],
+    "symptoms": [
+      "forgot my password",
+      "need to reset password",
+      "password needs to be changed"
+    ],
+    "answer": "To reset your password, press Ctrl + Alt + Delete and choose Change Password. If you've forgotten it, contact your IT administrator.",
+    "escalation": "Contact your IT administrator if you cannot reset or recover the password."
+  },
+  {
+    "id": "VPN-001",
+    "category": "VPN",
+    "issue": "VPN connection problem",
+    "keywords": [
+      "vpn",
+      "vpn problem",
+      "vpn not connecting",
+      "vpn connection",
+      "remote access"
+    ],
+    "symptoms": [
+      "vpn won't connect",
+      "vpn is not connecting",
+      "vpn connection failed",
+      "cannot connect to vpn"
+    ],
+    "answer": "Verify your internet connection, restart the VPN client, and sign in again with your latest credentials.",
+    "escalation": "Contact IT support if the VPN still cannot connect after these steps."
+  },
+  {
+    "id": "PRINTER-001",
+    "category": "Printer",
+    "issue": "Printer problem",
+    "keywords": [
+      "printer",
+      "printer problem",
+      "printer offline",
+      "cannot print"
+    ],
+    "symptoms": [
+      "printer is offline",
+      "printer not working",
+      "cannot print",
+      "printer not responding"
+    ],
+    "answer": "Check that the printer is powered on, connected to the network, and set as your default printer.",
+    "escalation": "Contact IT support if the printer remains unavailable after checking power, network connection, and default-printer settings."
+  },
+  {
+    "id": "WIFI-001",
+    "category": "Wi-Fi",
+    "issue": "Wi-Fi connection problem",
+    "keywords": [
+      "wifi",
+      "wi-fi",
+      "wifi problem",
+      "wifi not connecting",
+      "wireless"
+    ],
+    "symptoms": [
+      "wifi is not connecting",
+      "cannot connect to wifi",
+      "wifi disconnected",
+      "no wireless connection"
+    ],
+    "answer": "Restart your Wi-Fi adapter, reconnect to the network, and verify that Airplane Mode is turned off.",
+    "escalation": "Contact IT support if you cannot reconnect after restarting the Wi-Fi adapter and checking Airplane Mode."
+  },
+  {
+    "id": "EMAIL-001",
+    "category": "Email",
+    "issue": "Email problem",
+    "keywords": [
+      "email",
+      "outlook",
+      "email problem",
+      "mail problem",
+      "mailbox"
+    ],
+    "symptoms": [
+      "outlook not working",
+      "email is not working",
+      "cannot access email",
+      "email problem"
+    ],
+    "answer": "Verify your Outlook credentials, internet connection, and mailbox configuration.",
+    "escalation": "Contact IT support if you still cannot access or use your email after checking your credentials, internet connection, and mailbox configuration."
+  }
+]

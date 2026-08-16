@@ -1,4 +1,4 @@
-from utils.knowledge_base import get_answer
+from utils.knowledge_base import search_knowledge_base
 from utils.ai import ask_ai
 import streamlit as st
 from datetime import datetime
@@ -57,7 +57,7 @@ def create_chat_export():
 with st.sidebar:
 
     st.title("💻 AI Help Desk")
-    st.caption("Version 1.2")
+    st.caption("Version 1.3")
 
     st.divider()
 
@@ -250,49 +250,60 @@ if typed_question:
 
 # ---------- Process Question ----------
 
+# ---------- Process Question ----------
+
 if question:
 
     # Save user question
-
     save_message(
         "user",
         question,
     )
 
     with st.chat_message("user"):
-
         st.markdown(question)
 
-
-    # Search Knowledge Base
-
-    answer = get_answer(question)
-
-
-    # Generate Response
+    # Search Knowledge Base first
+    kb_result = search_knowledge_base(question)
 
     with st.chat_message("assistant"):
 
-        if answer:
+        if kb_result and "error" not in kb_result:
 
-            response = answer
+            # Knowledge Base response
+            response = kb_result["answer"]
+
+            st.caption(
+                f"📚 Source: Knowledge Base · "
+                f"{kb_result['category']}"
+            )
+
+            st.markdown(response)
+
+            # Show escalation guidance when available
+            if kb_result.get("escalation"):
+                st.info(
+                    f"📌 Escalation: "
+                    f"{kb_result['escalation']}"
+                )
 
         else:
 
+            # Groq AI fallback
             with st.spinner("🤖 Thinking..."):
-
                 response = ask_ai(question)
 
-        st.markdown(response)
+            st.caption(
+                "🤖 Source: AI Assistant"
+            )
 
+            st.markdown(response)
 
     # Save assistant response
-
     save_message(
         "assistant",
         response,
     )
-
 
 # ---------- Footer ----------
 
